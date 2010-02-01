@@ -15,3 +15,4 @@ class Lorem < Formula
     bin.install "lorem"
   end
 end
+
