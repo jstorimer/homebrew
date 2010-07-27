@@ -169,20 +169,8 @@ end
 
 def github_info name
   formula_name = Formula.path(name).basename
-  user = ''
-  branch = ''
 
-  if system "/usr/bin/which -s git"
-    user=`git config --global github.user`.chomp
-    all_branches = `git branch 2>/dev/null`
-     /^\*\s*(.*)/.match all_branches
-    branch = ($1 || '').chomp
-  end
-  
-  user = 'mxcl' if user.empty?
-  branch = 'master' if branch.empty?
-
-  return "http://github.com/#{user}/homebrew/commits/#{branch}/Library/Formula/#{formula_name}"
+  "http://github.com/mxcl/homebrew/commits/master/Library/Formula/#{formula_name}"
 end
 
 def info f
