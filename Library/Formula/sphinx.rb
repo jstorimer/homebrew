@@ -13,6 +13,8 @@ class Sphinx <Formula
     config_args << "--with-pgsql" if `/usr/bin/which pg_config`.size > 0
     config_args << "--without-mysql" if `/usr/bin/which mysqld`.size <= 0
 
+    inreplace "src/sphinx.h", /SPH_MAX_FIELDS\s+32/, "SPH_MAX_FIELDS 64"
+
     system "./configure", *config_args
     system "make install"
   end
